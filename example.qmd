@@ -1,0 +1,20 @@
+---
+title: "Search-replace Example"
+filters:
+  - search-replace
+search-replace:
+  +quarto: "[Quarto](https://quarto.org)"
+  +qurl  : https://quarto.org/docs
+  +forml : $\alpha * \beta = \gamma$
+  +pyth  : "Pythagoras' theorem: $a^2 + b^2 = \\dots$"
+  .doo   : "- doodledoo - "
+  +dab   : "**dab**"
+  "!dua" : "`duaaah`"
+  +br    : <br>\newline
+---  
+
++quarto allows us to write beautiful texts 
+about +pyth or similar complicated formulas (e.g. +forml), 
+and to [create our *own* filter extensions](+qurl/extensions/filters.html). +br
+Even extensions that replace text:+br
+.doo+dab+dab!dua, +dab!dua!
