@@ -48,8 +48,8 @@ Even extensions that replace text:+br
 gets rendered as
 
 > [Quarto](https://quarto.org) allows us to write beautiful texts about Pythagoras' theorem: $a^2 + b^2 = \dots$ or similar complicated formulas (e.g. $\alpha *\beta=\gamma$),  
-and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br>\newline 
-Even extensions that replace text:<br>\newline
+and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br> 
+Even extensions that replace text:<br>
 - doodledoo -**dab****dab**`duaaah`, **dab**`duaaah`!
 
 ## Known quirks
