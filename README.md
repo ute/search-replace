@@ -38,7 +38,7 @@ search-replace:
 ---  
 ```
 document text
-```md
+```text
 +quarto allows us to write beautiful texts 
 about +pyth or similar complicated formulas (e.g. +forml), 
 and to [create our *own* filters](+qurl/extensions/filters.html). +br
