@@ -1,6 +1,6 @@
 # Search-replace Extension for Quarto
 
-Quarto filter extension that lets you automatically search and replace strings in quarto document when rendering, in a similar way as simple LaTeX macros.
+Quarto filter extension that lets you automatically search and replace strings in quarto document when rendering, in a similar way as simple LaTeX text macros.
 
 Define pairs of search string and replacement in the document yaml, and let quarto do the work. The filter searches document text, including link targets. Replacements may include markdown text modifiers (emphasis) and math inline formulae.
 
