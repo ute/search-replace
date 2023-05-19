@@ -43,13 +43,13 @@ document text
 about +pyth or similar complicated formulas (e.g. +forml), 
 and to [create our *own* filters](+qurl/extensions/filters.html). +br
 Even filters that replace text:+br
-.doo+dab+dab!doa, +dab!doa!
+.doo+dab+dab+dab!doa, +dab!doa!
 ```
 gets rendered as
 
 > [Quarto](https://quarto.org) allows us to write beautiful texts about Pythagoras' theorem: $a^2 + b^2 = \dots$ or similar complicated formulas (e.g. $\alpha * \beta = \gamma$), and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br> 
 Even filters that replace text:<br>
-\- doodledoo -**dabdab**`duaaah`, **dab**`duaaah`!
+\- doodledoo -**dabdabdab**`duaaah`, **dab**`duaaah`!
 
 ## Known quirks
 
