@@ -18,7 +18,7 @@ If you're using version control, you will want to check in this directory.
 
 Include the filter in the document's yaml, and add a key `search-replace`. Under this key, define your search-replace pairs as subkeys in the form `search : replace`. It is a good idea to start the search key with a special character, such as "+" or ".", although it is not required.
 
-Upon rendering, every string that is a search key will be replaced. Therefore, keys should not be contained in each other - this would give ambiguous results.
+Upon rendering, every string or sub-string that matches a search key will be replaced in the main text, and in link targets. Search keys should not be contained in each other - this would give ambiguous results.
 
 ### Example:
 With the yaml
