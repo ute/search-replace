@@ -122,7 +122,7 @@ return{
 {
  Meta = function(m)
   local abbrdefs = m["search-replace"]
-   i = 1
+  local i = 1
    for k, v in pairs(m) do
      if string.sub(k, 1, 1) == "+" then 
         abbreviations[k] = v
@@ -139,9 +139,15 @@ return{
   end
   return(m)
   end
-} 
+} , 
 
-, {
+{
+Callout = function(call)
+  call.title = call.title:walk(replace_abbr)
+  call.content = call.content:walk(replace_abbr)
+  return(call)
+end,
+
 Pandoc = function(doc)
   return(pandoc.Pandoc(doc.blocks:walk(replace_abbr), doc.meta))
 end  
