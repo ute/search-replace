@@ -30,7 +30,7 @@ search-replace:
   +quarto: "[Quarto](https://quarto.org)"
   +qurl  : https://quarto.org/docs
   +forml : $\alpha * \beta = \gamma$
-  +pyth  : "Pythagoras' theorem: $a^2 + b^2 = \\dots$"
+  +pyth  : "*Pythagoras' theorem*: $a^2 + b^2 = \\dots$"
   .doo   : "- doodledoo - "
   +dab   : "**dab**"
   "!doa" : "`duaaah`"
@@ -47,7 +47,7 @@ Even filters that replace text:+br
 ```
 gets rendered as
 
-> [Quarto](https://quarto.org) allows us to write beautiful texts about Pythagoras' theorem: $a^2 + b^2 = \dots$ or similar complicated formulas (e.g. $\alpha * \beta = \gamma$), and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br> 
+> [Quarto](https://quarto.org) allows us to write beautiful texts about *Pythagoras' theorem*: $a^2 + b^2 = \dots$ or similar complicated formulas (e.g. $\alpha * \beta = \gamma$), and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br> 
 Even filters that replace text:<br>
 \- doodledoo -**dabdabdab**`duaaah`, **dab**`duaaah`!
 
