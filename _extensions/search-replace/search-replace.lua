@@ -143,8 +143,12 @@ return{
 
 {
 Callout = function(call)
-  call.title = call.title:walk(replace_abbr)
-  call.content = call.content:walk(replace_abbr)
+  if call.title then
+    call.title = call.title:walk(replace_abbr)  
+  end
+  if call.content then
+    call.content = call.content:walk(replace_abbr)  
+  end
   return(call)
 end,
 
