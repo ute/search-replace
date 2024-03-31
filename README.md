@@ -34,7 +34,7 @@ search-replace:
   .doo   : "- doodledoo - "
   +dab   : "**dab**"
   "!doa" : "`duaaah`"
-  +br    : <br>\newline
+  +br    : <br>\ \newline
 ---  
 ```
 document text
