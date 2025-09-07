@@ -8,7 +8,7 @@ Define pairs of search string and replacement in the document yaml, and let quar
 
 - **Format dependent** replacements are currently possible for pdf and html. Send a PR or open an issue if you need further formats :-)
 
-- For long lists of replacements, check out extension [`mergemeta`](https://github.com/ute/mergemeta), which allows you to merge in data stored under a different key (not `search-replace`) in another `yaml` file, see under Section [Tips](#tips)
+- For long lists of replacements, check out extension [`mergemeta`](https://github.com/ute/mergemeta), which allows you to merge in data stored under a different key (not `search-replace`) in another `yaml` file, see under Section [Tip](#tip-pre-defined-abbreviations-in-separate-files-tips)
 
 ## Installing
 
@@ -83,7 +83,7 @@ Even filters that replace text:<br>
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).
 
-## Tip: pre-defined abbreviations in separate files {#tips}
+## Tip: pre-defined abbreviations in separate files 
 
 Store long lists of search-replace items in an extra yaml file and include it in the documents yaml using the `metadata-files` key.
 With the [`mergemeta`](https://github.com/ute/mergemeta), the abbreviations can be merged into the `search-replace` key. This avoids overwriting document specific abbreviations, and allows to combine multiple abbreviation sources files.
