@@ -1,0 +1,19 @@
+---
+format: html
+filters:
+  - mergemeta
+  - search-replace
+metadata-files: 
+  - myabbreviations.yml # defines mystuff
+
+mergemeta:
+   search-replace: mystuff
+---  
+
++quarto allows us to write beautiful texts 
+about +pyth or similar complicated formulas (e.g. +forml), 
+and to [create our *own* filter extensions](+qurl/extensions/filters.html). +br
+Even extensions that replace text:+br
+.doo+dab+dab!dua, +dab!dua!
+
+Since we wanted to +wedo, we chose to render as +form.

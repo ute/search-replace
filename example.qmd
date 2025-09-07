@@ -1,6 +1,6 @@
 ---
 title: "Search-replace Example"
-format: html
+format: pdf
 
 filters:
   - search-replace

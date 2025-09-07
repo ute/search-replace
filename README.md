@@ -5,8 +5,10 @@ Quarto filter extension that lets you automatically search and replace strings i
 Define pairs of search string and replacement in the document yaml, and let quarto do the work. The filter searches document text, including link targets. Replacements may include markdown text modifiers (emphasis) and math inline formulae.
 
 #### News:
-**Format dependent** replacements are currently possible for pdf and html. Send a PR or open an issue if you need further formats :-)
 
+- **Format dependent** replacements are currently possible for pdf and html. Send a PR or open an issue if you need further formats :-)
+
+- For long lists of replacements, check out extension [`mergemeta`](https://github.com/ute/mergemeta), which allows you to merge in data stored under a different key (not `search-replace`) in another `yaml` file, see under Section [Tips](#tips)
 
 ## Installing
 
@@ -29,6 +31,7 @@ For format dependent rendering, two keys are reserved: **`--pdf--`** and **`--ht
 With the yaml
 ```yaml
 ---
+format: pdf
 filters:
   - search-replace
 search-replace:
@@ -80,3 +83,33 @@ Even filters that replace text:<br>
 
 Here is the source code for a minimal example: [example.qmd](example.qmd).
 
+## Tip: pre-defined abbreviations in separate files {#tips}
+
+Store long lists of search-replace items in an extra yaml file and include it in the documents yaml using the `metadata-files` key.
+With the [`mergemeta`](https://github.com/ute/mergemeta), the abbreviations can be merged into the `search-replace` key. This avoids overwriting document specific abbreviations, and allows to combine multiple abbreviation sources files.
+
+For example, file [`myabbreviations.yml`](myabbreviations.yml) contains search-replace definitions stored under `mystuff`:
+
+```yml
+mystuff:
+  +quarto: "[Quarto](https://quarto.org)"
+  +qurl  : https://quarto.org/docs
+# etc  
+```
+ and can be used in qmd document [`mergemeta-example.qmd`](mergemeta-example.qmd) with the yaml header
+ 
+```yml
+---
+format: html
+filters:
+  - mergemeta
+  - search-replace
+metadata-files: 
+  - myabbreviations.yml # defines mystuff
+
+mergemeta:
+   search-replace: mystuff
+---  
+```
+
+Make sure to list filter `mergemeta` before `search-replace`.

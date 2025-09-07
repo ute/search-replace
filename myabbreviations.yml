@@ -1,0 +1,17 @@
+mystuff:
+  +quarto: "[Quarto](https://quarto.org)"
+  +qurl  : https://quarto.org/docs
+  +forml : $\alpha * \beta = \gamma$
+  +pyth  : "*Pythagoras' theorem*: $a^2 + b^2 = \\dots$"
+  .doo   : "- doodledoo - "
+  +dab   : "**dab**"
+  "!doa" : "`duaaah`"
+  --pdf--:
+    +br    : \newline
+    +form  : pdf
+    +wedo  : "print on paper"
+  --html--:
+    +br    :  <br>
+    +form  : html
+    +wedo  : "read on screen"  
+

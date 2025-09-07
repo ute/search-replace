@@ -3,3 +3,4 @@
 *_files/
 /.luarc.json
 *.code-workspace
+_extensions/ute*
