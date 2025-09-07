@@ -86,7 +86,7 @@ Here is the source code for a minimal example: [example.qmd](example.qmd).
 ## Tip: pre-defined abbreviations in separate files 
 
 Store long lists of search-replace items in an extra yaml file and include it in the documents yaml using the `metadata-files` key.
-With the [`mergemeta`](https://github.com/ute/mergemeta), the abbreviations can be merged into the `search-replace` key. This avoids overwriting document specific abbreviations, and allows to combine multiple abbreviation sources files.
+With the [`mergemeta`](https://github.com/ute/mergemeta) extension, the abbreviations can be merged into the `search-replace` key. This avoids overwriting document specific abbreviations, and allows to combine multiple abbreviation sources files.
 
 For example, file [`myabbreviations.yml`](myabbreviations.yml) contains search-replace definitions stored under `mystuff`:
 
