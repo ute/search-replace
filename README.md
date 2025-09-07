@@ -8,7 +8,7 @@ Define pairs of search string and replacement in the document yaml, and let quar
 
 - **Format dependent** replacements are currently possible for pdf and html. Send a PR or open an issue if you need further formats :-)
 
-- For long lists of replacements, check out extension [`mergemeta`](https://github.com/ute/mergemeta), which allows you to merge in data stored under a different key (not `search-replace`) in another `yaml` file, see under Section [Tip](#tip-pre-defined-abbreviations-in-separate-files-tips)
+- For long lists of replacements, check out extension [`mergemeta`](https://github.com/ute/mergemeta), which allows you to merge in data stored under a different key (not `search-replace`) in another `yaml` file, see under Section [Tip](#tip-pre-defined-abbreviations-in-separate-files)
 
 ## Installing
 
