@@ -122,8 +122,10 @@ return{
 {
  Meta = function(m)
   local abbrdefs = m["search-replace"]
+  local abbr_pdf  = {}
+  local abbr_html = {}
   local i = 1
-   for k, v in pairs(m) do
+   for k, v in pairs(m) do -- deprecate this at some stage. It is messy.
      if string.sub(k, 1, 1) == "+" then 
         abbreviations[k] = v
         abbr[i] = k
@@ -132,9 +134,25 @@ return{
    end
   if abbrdefs then 
     for k, v in pairs(abbrdefs) do
-         abbreviations[k] = v
-         abbr[i] = k
-         i = i+1
+      if k=="--pdf--" and quarto.doc.is_format("pdf") then
+        print("pdf abbreviations")
+        for kk, vv in pairs(v) do
+          abbreviations[kk] = vv
+          abbr[i] = kk
+          i = i+1
+        end  
+      elseif k=="--html--" and quarto.doc.is_format("html") then
+        print("htmlings")
+        for kk, vv in pairs(v) do
+          abbreviations[kk] = vv
+          abbr[i] = kk
+          i = i+1
+        end  
+      else   
+        abbreviations[k] = v
+        abbr[i] = k
+        i = i+1
+      end  
     end
   end
   return(m)

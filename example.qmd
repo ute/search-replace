@@ -1,5 +1,7 @@
 ---
 title: "Search-replace Example"
+format: html
+
 filters:
   - search-replace
 search-replace:
@@ -10,7 +12,14 @@ search-replace:
   .doo   : "- doodledoo - "
   +dab   : "**dab**"
   "!dua" : "`duaaah`"
-  +br    : <br>\newline
+  --pdf--:
+    +br    : \newline
+    +form  : pdf
+    +wedo  : "print on paper"
+  --html--:
+    +br    :  <br>
+    +form  : html
+    +wedo  : "read on screen"  
 ---  
 
 +quarto allows us to write beautiful texts 
@@ -18,3 +27,5 @@ about +pyth or similar complicated formulas (e.g. +forml),
 and to [create our *own* filter extensions](+qurl/extensions/filters.html). +br
 Even extensions that replace text:+br
 .doo+dab+dab!dua, +dab!dua!
+
+Since we wanted to +wedo, we chose to render as +form.

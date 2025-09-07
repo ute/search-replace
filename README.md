@@ -4,6 +4,9 @@ Quarto filter extension that lets you automatically search and replace strings i
 
 Define pairs of search string and replacement in the document yaml, and let quarto do the work. The filter searches document text, including link targets. Replacements may include markdown text modifiers (emphasis) and math inline formulae.
 
+#### News:
+**Format dependent** replacements are currently possible for pdf and html. Send a PR or open an issue if you need further formats :-)
+
 
 ## Installing
 
@@ -20,6 +23,8 @@ Include the filter in the document's yaml, and add a key `search-replace`. Under
 
 Upon rendering, every string or sub-string that matches a search key will be replaced in the main text, and in link targets. Search keys should not be contained in each other - this would give ambiguous results.
 
+For format dependent rendering, two keys are reserved: **`--pdf--`** and **`--html--`** (further may be added upon request). List format specific abbreviations here.
+
 ### Example:
 With the yaml
 ```yaml
@@ -34,7 +39,14 @@ search-replace:
   .doo   : "- doodledoo - "
   +dab   : "**dab**"
   "!doa" : "`duaaah`"
-  +br    : <br>\ \newline
+  --pdf--:
+    +br    : \newline
+    +form  : pdf
+    +wedo  : "print on paper"
+  --html--:
+    +br    :  <br>
+    +form  : html
+    +wedo  : "read on screen"  
 ---  
 ```
 document text
@@ -44,12 +56,16 @@ about +pyth or similar complicated formulas (e.g. +forml),
 and to [create our *own* filters](+qurl/extensions/filters.html). +br
 Even filters that replace text:+br
 .doo+dab+dab+dab!doa, +dab!doa!
+
+Since we wanted to +wedo, we chose to render as +form.
 ```
-gets rendered as
+gets rendered, if pdf, as
 
 > [Quarto](https://quarto.org) allows us to write beautiful texts about *Pythagoras' theorem*: $a^2 + b^2 = \dots$ or similar complicated formulas (e.g. $\alpha * \beta = \gamma$), and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br> 
 Even filters that replace text:<br>
 \- doodledoo -**dabdabdab**`duaaah`, **dab**`duaaah`!
+> 
+> Since we wanted to read on paper, we chose to render as pdf.
 
 ## Known quirks
 
