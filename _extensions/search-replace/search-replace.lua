@@ -142,13 +142,14 @@ return{
  Meta = function(m)
   local abbrdefs = m["search-replace"]
   local i = 1
-   for k, v in pairs(m) do -- deprecate this at some stage. It is messy.
-     if string.sub(k, 1, 1) == "+" then 
-        abbreviations[k] = v
-        abbr[i] = k
-        i = i+1
-      end
-   end
+  --  for k, v in pairs(m) do -- deprecate this at some stage. It is messy.
+  --    if string.sub(k, 1, 1) == "+" then 
+  --       abbreviations[k] = v
+  --       abbr[i] = k
+  --       i = i+1
+  --     end
+  --  end
+  -- now it is deprecated
   if abbrdefs ~= nil then
     i = extractabb(abbrdefs, i)
   end
