@@ -10,16 +10,17 @@ search-replace:
   +forml : $\alpha * \beta = \gamma$
   +pyth  : "Pythagoras' theorem: $a^2 + b^2 = \\dots$"
   .doo   : "- doodledoo - "
+  --when-format--:
+    html:
+      +br    :  <br>
+      +form  : html
+      +wewant: "read on screen"  
+    pdf:  
+      +br    : \newline
+      +form  : pdf
+      +wewant: "print on paper"  
   +dab   : "**dab**"
   "!dua" : "`duaaah`"
-  --pdf--:
-    +br    : \newline
-    +form  : pdf
-    +wedo  : "print on paper"
-  --html--:
-    +br    :  <br>
-    +form  : html
-    +wedo  : "read on screen"  
 ---  
 
 +quarto allows us to write beautiful texts 
@@ -28,4 +29,4 @@ and to [create our *own* filter extensions](+qurl/extensions/filters.html). +br
 Even extensions that replace text:+br
 .doo+dab+dab!dua, +dab!dua!
 
-Since we wanted to +wedo, we chose to render as +form.
+Since we wanted to +wewant, we chose to render as +form.

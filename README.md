@@ -6,7 +6,7 @@ Define pairs of search string and replacement in the document yaml, and let quar
 
 #### News:
 
-- **Format dependent** replacements are currently possible for pdf and html. Send a PR or open an issue if you need further formats :-)
+- **Format dependent** replacements are possible now for all formats that are detectable by quarto extensions, notably pdf and html, see the [quarto documentation](https://quarto.org/docs/extensions/lua-api.html#format-detection)
 
 - For long lists of replacements, check out extension [`mergemeta`](https://github.com/ute/mergemeta), which allows you to merge in data stored under a different key (not `search-replace`) in another `yaml` file, see under Section [Tip](#tip-pre-defined-abbreviations-in-separate-files)
 
@@ -25,13 +25,15 @@ Include the filter in the document's yaml, and add a key `search-replace`. Under
 
 Upon rendering, every string or sub-string that matches a search key will be replaced in the main text, and in link targets. Search keys should not be contained in each other - this would give ambiguous results.
 
-For format dependent rendering, two keys are reserved: **`--pdf--`** and **`--html--`** (further may be added upon request). List format specific abbreviations here.
+There are some reserved keys (currently only one, but more may be added) that start with '--':
+
+- '--when-format--' is used to specify abbreviations that are only rendered when the document format matches the following sub-key.
 
 ### Example:
 With the yaml
 ```yaml
 ---
-format: pdf
+format: html
 filters:
   - search-replace
 search-replace:
@@ -42,14 +44,17 @@ search-replace:
   .doo   : "- doodledoo - "
   +dab   : "**dab**"
   "!doa" : "`duaaah`"
-  --pdf--:
-    +br    : \newline
-    +form  : pdf
-    +wedo  : "print on paper"
-  --html--:
-    +br    :  <br>
-    +form  : html
-    +wedo  : "read on screen"  
+  --when-format--:
+    html:
+      +br    :  <br>
+      +form  : html
+      +wewant: "read on screen"  
+    pdf:  
+      +br    : \newline
+      +form  : pdf
+      +wewant: "print on paper"  
+  +dab   : "**dab**"
+  "!dua" : "`duaaah`"
 ---  
 ```
 document text
@@ -60,24 +65,21 @@ and to [create our *own* filters](+qurl/extensions/filters.html). +br
 Even filters that replace text:+br
 .doo+dab+dab+dab!doa, +dab!doa!
 
-Since we wanted to +wedo, we chose to render as +form.
+Since we wanted to +wewant, we chose to render as +form.
 ```
-gets rendered, if pdf, as
+gets rendered, if html, as
 
 > [Quarto](https://quarto.org) allows us to write beautiful texts about *Pythagoras' theorem*: $a^2 + b^2 = \dots$ or similar complicated formulas (e.g. $\alpha * \beta = \gamma$), and to [create our *own* filters](https://quarto.org/docs/extensions/filters.html). <br> 
 Even filters that replace text:<br>
 \- doodledoo -**dabdabdab**`duaaah`, **dab**`duaaah`!
 > 
-> Since we wanted to read on paper, we chose to render as pdf.
+> Since we wanted to read on screen, we chose to render as html.
 
 ## Known quirks
 
 - search keys and replacement strings that can be interpreted as yaml because of special characters such as `:`,  or leading  `-`,`` ` ``,`[`, `!`, have to be enquoted. To be on the safe side, you can just enquote all replacement strings.
 - backslashes in LaTeX formulae have to be escaped with a second backslash if and only if the containing string is enquoted.
 
-## Acknowledgement
-
- [Scott Koga-Browes](https://github.com/scokobro)' lovely python-based pandoc filter [pandoc-abbreviations](https://github.com/scokobro/pandoc-abbreviations) that replaces text strings (not links) inspired me to write this quarto extension. He requires the search keys to start with a "+" sign which gives a nice and clear appearance - they are easy to spot in the source text.
 
 ## Example
 
@@ -113,3 +115,7 @@ mergemeta:
 ```
 
 Make sure to list filter `mergemeta` before `search-replace`.
+
+## Acknowledgement
+
+ [Scott Koga-Browes](https://github.com/scokobro)' lovely python-based pandoc filter [pandoc-abbreviations](https://github.com/scokobro/pandoc-abbreviations) that replaces text strings (not links) inspired me to write this quarto extension. He requires the search keys to start with a "+" sign which gives a nice and clear appearance - they are easy to spot in the source text.
