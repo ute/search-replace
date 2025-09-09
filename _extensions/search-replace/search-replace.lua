@@ -125,7 +125,7 @@ local function extractabb (abbrtable, i)
         if quarto.doc.is_format(kk)
         then
           i = extractabb(vv, i)
-          print("extracted for format "..kk.."- stack overflow?")
+          -- print("extracted for format "..kk.."- stack overflow?")
         end
       end
     else
