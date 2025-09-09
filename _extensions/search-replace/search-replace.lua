@@ -29,8 +29,8 @@ SOFTWARE.
 -- local str= pandoc.utils.stringify
 -- local ptyp = pandoc.utils.type
 
-local abbreviations = {}
-local abbr ={}
+local abbreviations = {} -- replacement values
+local abbr ={} -- "macro" names
 
 
 -- helper function, for readability
@@ -41,12 +41,12 @@ local function append(lst1, lst2)
   return(lst1)
 end  
 
-local function replacevalues(lst1, lst2)
-  for i, v in ipairs(lst2) do
-    lst1[i]= v
-  end 
-  return(lst1)
-end  
+-- local function replacevalues(lst1, lst2)
+--   for i, v in ipairs(lst2) do
+--     lst1[i]= v
+--   end 
+--   return(lst1)
+-- end  
 
 
 -- function that takes a string and a list of patterns
@@ -65,23 +65,23 @@ local findfirst = function(strg, patts)
          A = a
          B = b
          Patt = patt
-       end   
-     end   
+       end
+     end
   end
   if A < n then return A, B, Patt
-    else return nil 
-  end    
+    else return nil
+  end
 end
 
 
 -- Todo-if-bored: rewrite, just replacing from back to front
 local  replace_abbr_in_str = function(original)
-  local result = pandoc.Inlines("")    
+  local result = pandoc.Inlines("")
   local istart, iend, patt = findfirst(original, abbr)
   local found = false
-  if istart then 
+  if istart then
     found = true
-    while found do 
+    while found do
       if istart > 1 then -- preserve start
         local startstr = string.sub(original, 1, istart-1)
         table.insert(result,  pandoc.Str(startstr))
@@ -95,21 +95,21 @@ local  replace_abbr_in_str = function(original)
     return(result)
   else
     return(pandoc.Inlines(original))
-  end     
-end   
+  end
+end
 
 replace_abbr = {
   Inlines=function(ilist)
-    local newtable =  pandoc.Inlines("") 
-    local zzz = pandoc.Inlines("") 
+    local newtable =  pandoc.Inlines("")
+    local zzz = pandoc.Inlines("")
     for i, v in ipairs(ilist) do
        if v.t == "Str" then
           zzz = replace_abbr_in_str(v.text)
        elseif v.t == "Link" then
           -- gets already processed as Str :-) v.content = replace_abbr_in_str(pandoc.utils.stringify(v.content))
           v.target = pandoc.utils.stringify(replace_abbr_in_str(pandoc.utils.stringify(v.target)))
-          zzz = pandoc.Inlines(v)  
-       else  zzz = pandoc.Inlines(v)  
+          zzz = pandoc.Inlines(v)
+       else  zzz = pandoc.Inlines(v)
        end
       newtable = append(newtable, zzz)
     end
@@ -117,6 +117,25 @@ replace_abbr = {
   end
 }
 
+
+local function extractabb (abbrtable, i)
+  for k, v in pairs(abbrtable) do
+    if k=="--when-format--" then
+      for kk, vv in pairs(v) do
+        if quarto.doc.is_format(kk)
+        then
+          i = extractabb(vv, i)
+          print("extracted for format "..kk.."- stack overflow?")
+        end
+      end
+    else
+      abbreviations[k] = v
+      abbr[i] = k
+      i = i+1
+    end
+  end
+  return i
+end
 
 return{
 {
@@ -130,28 +149,8 @@ return{
         i = i+1
       end
    end
-  if abbrdefs then 
-    for k, v in pairs(abbrdefs) do
-      if k=="--pdf--" and quarto.doc.is_format("pdf") then
-        -- print("pdf abbreviations")
-        for kk, vv in pairs(v) do
-          abbreviations[kk] = vv
-          abbr[i] = kk
-          i = i+1
-        end  
-      elseif k=="--html--" and quarto.doc.is_format("html") then
-        -- print("htmlings")
-        for kk, vv in pairs(v) do
-          abbreviations[kk] = vv
-          abbr[i] = kk
-          i = i+1
-        end  
-      else   
-        abbreviations[k] = v
-        abbr[i] = k
-        i = i+1
-      end  
-    end
+  if abbrdefs ~= nil then
+    i = extractabb(abbrdefs, i)
   end
   return(m)
   end
