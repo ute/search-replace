@@ -42,8 +42,6 @@ search-replace:
   +forml : $\alpha * \beta = \gamma$
   +pyth  : "*Pythagoras' theorem*: $a^2 + b^2 = \\dots$"
   .doo   : "- doodledoo - "
-  +dab   : "**dab**"
-  "!doa" : "`duaaah`"
   --when-format--:
     html:
       +br    :  <br>
@@ -63,7 +61,7 @@ document text
 about +pyth or similar complicated formulas (e.g. +forml), 
 and to [create our *own* filters](+qurl/extensions/filters.html). +br
 Even filters that replace text:+br
-.doo+dab+dab+dab!doa, +dab!doa!
+.doo+dab+dab+dab!dua, +dab!dua!
 
 Since we wanted to +wewant, we chose to render as +form.
 ```
