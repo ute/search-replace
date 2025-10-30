@@ -60,8 +60,7 @@ document text
 +quarto allows us to write beautiful texts 
 about +pyth or similar complicated formulas (e.g. +forml), 
 and to [create our *own* filters](+qurl/extensions/filters.html). +br
-Even filters that replace text:+br
-.doo+dab+dab+dab!dua, +dab!dua!
+Even filters that replace text:+br .doo+dab+dab+dab!dua, +dab!dua!
 
 Since we wanted to +wewant, we chose to render as +form.
 ```
