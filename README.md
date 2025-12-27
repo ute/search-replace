@@ -25,9 +25,9 @@ Include the filter in the document's yaml, and add a key `search-replace`. Under
 
 Upon rendering, every string or sub-string that matches a search key will be replaced in the main text, and in link targets. Search keys should not be contained in each other - this would give ambiguous results.
 
-There are some reserved keys (currently only one, but more may be added) that start with '--':
+There are some reserved keys (currently only one, but more may be added) that start with `--`:
 
-- '--when-format--' is used to specify abbreviations that are only rendered when the document format matches the following sub-key.
+- `--when-format--` is used to specify abbreviations that are only rendered when the document format matches the following sub-key.
 
 ### Example:
 With the yaml
