@@ -12,24 +12,16 @@ search-replace:
   .doo   : "- doodledoo - "
   --when-format--:
     html:
-      +br    :  <br>
-      +form  : html
+      +br    :  "`<br>`{=html}"
+      +format: html
       +wewant: "read on screen"  
     pdf:  
-      +br    : \newline
-      +form  : pdf
+      +br    : "`\\newline`{=latex}"
+      +format: pdf
       +wewant: "print on paper"  
   +dab   : "**dab**"
   "!dua" : "`duaaah`"
-  --pdf--:
-    +br    : "`\\newline`{=latex}"
-    +format  : pdf
-    +wedo  : "print on paper"
-  --html--:
-    +br    :  "`<br>`{=html}"
-    +format  : html
-    +wedo  : "read on screen"  
----  
+ ---  
 
 +quarto allows us to write beautiful texts 
 about +pyth or similar complicated formulas (e.g. +forml), 
@@ -37,4 +29,4 @@ and to [create our *own* filter extensions](+qurl/extensions/filters.html). +br
 Even extensions that replace text:+br
 .doo+dab+dab!dua, +dab!dua!
 
-Since we wanted to +wedo, we chose to render as +format.
+Since we wanted to +wewant, we chose to render as +format.
