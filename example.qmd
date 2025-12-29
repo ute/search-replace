@@ -21,7 +21,7 @@ search-replace:
       +wewant: "print on paper"  
   +dab   : "**dab**"
   "!dua" : "`duaaah`"
- ---  
+---  
 
 +quarto allows us to write beautiful texts 
 about +pyth or similar complicated formulas (e.g. +forml), 
