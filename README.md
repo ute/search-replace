@@ -42,14 +42,14 @@ search-replace:
   +forml : $\alpha * \beta = \gamma$
   +pyth  : "*Pythagoras' theorem*: $a^2 + b^2 = \\dots$"
   .doo   : "- doodledoo - "
-  --when-format--:
+--when-format--:
     html:
-      +br    :  <br>
-      +form  : html
+      +br    :  "`<br>`{=html}"
+      +format: html
       +wewant: "read on screen"  
     pdf:  
-      +br    : \newline
-      +form  : pdf
+      +br    : "`\\newline`{=latex}"
+      +format: pdf
       +wewant: "print on paper"  
   +dab   : "**dab**"
   "!dua" : "`duaaah`"
